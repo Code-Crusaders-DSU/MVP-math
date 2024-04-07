@@ -73,20 +73,18 @@
             border: 2px solid #4CAF50; /* Add border on hover */
         }
         
-        
-        
 
-        .hero-btn.left {
+        .hero-btn {
             position: absolute;
-            bottom: 170px;
-            left: 400px;
-        }
-
-        .hero-btn.right {
-            position: absolute;
-            bottom: 170px;
-            right: 400px;
-        }
+            top: 50%;
+            right: 100px;
+            transform: translateY(-50%);
+            margin-right: 500px;
+          }
+          
+        
+          
+        
         
         @media(max-width: 700px) {
             .hero h1 {
@@ -154,7 +152,7 @@
 
         .hero {
             width: 100%;
-            background-image: linear-gradient(rgba(4, 9, 30, 0.3), rgba(4, 9, 30, 0.3)), url('images/homepage.jpg');
+            background-image: linear-gradient(rgba(4, 9, 30, 0.3), rgba(4, 9, 30, 0.3)), url('images/mainspace.gif');
             background-position: center;
             background-size: cover;
             height: 100vh;
@@ -165,6 +163,28 @@
             color: #fff;
             position: relative; /* Add position relative for absolute positioning of buttons */
         }
+
+        .neon-text {
+            font-size: 80px;
+            white-space: nowrap;
+            background-image: linear-gradient(90deg, #ff00ff, #ff99cc, #ff00ff); /* Pink gradient */
+            -webkit-background-clip: text; /* Apply gradient as text color */
+            -webkit-text-fill-color: transparent; /* Make text transparent */
+            animation: neon-glow 1.5s ease-in-out infinite alternate; /* Neon glow animation */
+            margin-bottom: 72%;
+            right: 40px; /* Adjust right value to move the text to the left */
+        }
+        
+        
+        @keyframes neon-glow {
+            from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff, 0 0 100px #ff00ff, 0 0 150px #ff00ff;
+            }
+            to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff00ff, 0 0 40px #ff00ff, 0 0 70px #ff00ff, 0 0 80px #ff00ff, 0 0 100px #ff00ff, 0 0 150px #ff00ff, 0 0 200px #ff00ff;
+            }
+        }
+        
         
     </style>
 </head>
@@ -182,8 +202,8 @@
 
     <section class="hero">
         <div class="hero-content">
-            <a href="src/topics.html" class="hero-btn left"><b>Challenge myself!</b></a>
-            <a href="src/topics.html" class="hero-btn right"><b>Start your journey</b></a>
+            <div class="neon-text" style="right: 100px;">WELCOME TO FLASHLEARN</div>
+            <a href="src/topics.html" class="hero-btn"><b>Start your journey</b></a>
         </div>
     </section>
 

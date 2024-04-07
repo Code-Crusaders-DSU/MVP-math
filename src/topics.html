@@ -6,6 +6,7 @@
     <title>Cool topics</title>
     <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
     <style>
+        /* Add your CSS styles here */
         body {
             background-image: url('../images/cutechildren.jpg');
             background-size: cover;
@@ -20,6 +21,7 @@
             min-height: 100vh;
             position: relative;
           }
+
         .container {
             display: flex;
             flex-direction: column; /* Arrange boxes in columns */
@@ -70,42 +72,135 @@
         .box:hover .title {
             bottom: -50px; /* Adjust this value to control the title's position */
         }
+
+        .popup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0,0,0, 0.7); /* Light shade of red */
+            padding: 40px;
+            border-radius: 10px;
+            color: #fff;
+            display: none;
+        }
+
+        .popup-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            font-size: 24px;
+        }
+
+        .popup-content button {
+            padding: 10px 20px;
+            background-color: #36367d;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 20px;
+        }
+
+        .popup-content button:hover {
+            background-color: #5151a4;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="row">
-            <div class="box">
-                <a href="../content/Fractions.pdf">
+            <div class="box" onclick="showPopup('Fractions')">
                 <img src="../images/fractions.png" alt="Image 1">
                 <div class="title">Fractions</div>
-                </a>
             </div>
-            <div class="box">
-                <a href="../content/Division.pdf">
-                <img src="../images/division.jpeg" alt="Image 2">
-                <div class="title">Division</div>
-                </a>
+            <div class="box" onclick="showPopup('Interest')">
+                <img src="../images/interest.jpg" alt="Image 2">
+                <div class="title">Interest</div>
             </div>
         </div>
         <div class="row">
-            <div class="box">
-                <a href="../content/Nutrition.pdf">
+            <div class="box" onclick="showPopup('Nutrition')">
                 <img src="../images/nutrition.jpeg" alt="Image 3">
                 <div class="title">Nutrition</div>
-                </a>
             </div>
-            <div class="box">
-                <a href="../content/Habitats.pdf">
+            <div class="box" onclick="showPopup('Habitat')">
                 <img src="../images/habitat.jpeg" alt="Image 4">
                 <div class="title">Habitat</div>
-                </a>
             </div>
         </div>
         <!-- Add more rows or boxes as needed -->
     </div>
+
+    <div class="popup" id="popup">
+        <div class="popup-content">
+            <div id="popup-message"></div>
+            <button id="challenge-button">Challenge</button>
+            <button id="read-button">Read</button>
+
+
+        </div>
+    </div>
+
     <script>
-        // You can add JavaScript for additional functionality if needed
+        function showPopup(topic) {
+            document.getElementById('popup-message').innerText = `Do you want to take a challenge or read more about ${topic}?`;
+            // Pass the topic parameter when calling redirectToReadMore
+            document.getElementById('read-button').setAttribute('onclick', `redirectToReadMore('${topic}')`);
+            document.getElementById('challenge-button').setAttribute('onclick', `redirectToChallenge('${topic}')`);
+            document.getElementById('popup').style.display = 'block';
+        }
+    
+        function redirectToChallenge(topic) {
+            // Redirect to challenge page based on the topic
+            let challengeUrl;
+            
+            // Determine the challenge HTML file URL based on the topic
+            switch (topic) {
+                case 'Fractions':
+                    challengeUrl = "../src/question_fraction.html";
+                    break;
+                case 'Interest':
+                    challengeUrl = "../src/question_interest.html";
+                    break;
+                case 'Nutrition':
+                    challengeUrl = "../src/question_nutrition.html";
+                    break;
+                case 'Habitat':
+                    challengeUrl = "../src/question_habitats.html";
+                    break;
+                
+            }
+            
+            // Redirect to the determined challenge HTML file URL
+            window.location.href = challengeUrl;
+        }
+    
+
+        function redirectToReadMore(topic) {
+            let pdfUrl;
+        
+            // Determine the PDF file URL based on the topic
+            switch (topic) {
+                case 'Fractions':
+                    pdfUrl = "../content/Fractions.pdf";
+                    break;
+                case 'Interest':
+                    pdfUrl = "../content/Interest.pdf";
+                    break;
+                case 'Nutrition':
+                    pdfUrl = "../content/Nutrition.pdf";
+                    break;
+                case 'Habitat':
+                    pdfUrl = "../content/Habitats.pdf";
+                    break;
+            }
+        
+            // Redirect to the determined PDF file URL
+            window.location.href = pdfUrl;
+        }
+        
     </script>
 </body>
 </html>
