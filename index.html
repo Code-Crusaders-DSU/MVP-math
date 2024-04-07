@@ -56,22 +56,37 @@
         
         .hero-btn {
             display: inline-block;
+            padding: 20px 40px; /* Increased padding for a larger button */
+            font-size: 24px; /* Increased font size */
+            text-align: center;
             text-decoration: none;
-            color: #adabab;
-            border: 1px solid #000;
-            padding: 12px 34px;
-            font-size: 13px;
-            background: transparent;
-            cursor: pointer;
-            transition: color 0.3s, border 0.3s, background 0.3s; /* Consistent transition for color, border, and background */
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            margin-bottom: 20px; /* Add margin to separate buttons */
+            transition: background-color 0.3s; /* Added transition for hover effect */
         }
         
         .hero-btn:hover {
-            border: 5px solid #f1f436;
-            background: white;
-            color: #333;
+            background-color: transparent; /* Set background color to transparent on hover */
+            color: #4CAF50; /* Change text color on hover */
+            border: 2px solid #4CAF50; /* Add border on hover */
         }
         
+        
+        
+
+        .hero-btn.left {
+            position: absolute;
+            bottom: 170px;
+            left: 400px;
+        }
+
+        .hero-btn.right {
+            position: absolute;
+            bottom: 170px;
+            right: 400px;
+        }
         
         @media(max-width: 700px) {
             .hero h1 {
@@ -138,31 +153,8 @@
         }
 
         .hero {
-            margin-left: 60px;
-            padding: 15px;
-            transition: margin-left 0.5s;
-        }
-
-        .hero-content {
-            text-align: center;
-            margin-top: 50px;
-            margin-right: 50px
-        }
-
-        .hero-btn {
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 18px;
-            text-align: center;
-            text-decoration: none;
-            background-color: #4CAF50;
-            color: white;
-            border-radius: 5px;
-        }
-
-        .hero {
             width: 100%;
-            background-image: linear-gradient(rgba(4, 9, 30, 0.5), rgba(4, 9, 30, 0.5)), url('images/homepage.jpg');
+            background-image: linear-gradient(rgba(4, 9, 30, 0.3), rgba(4, 9, 30, 0.3)), url('images/homepage.jpg');
             background-position: center;
             background-size: cover;
             height: 100vh;
@@ -171,6 +163,7 @@
             align-items: center;
             text-align: center;
             color: #fff;
+            position: relative; /* Add position relative for absolute positioning of buttons */
         }
         
     </style>
@@ -189,7 +182,8 @@
 
     <section class="hero">
         <div class="hero-content">
-        <a href="src/topics.html" class="hero-btn"><b>Start your journey</b></a>
+            <a href="src/topics.html" class="hero-btn left"><b>Challenge myself!</b></a>
+            <a href="src/topics.html" class="hero-btn right"><b>Start your journey</b></a>
         </div>
     </section>
 
